@@ -40,11 +40,11 @@ function search(){
     let name = document.getElementById("name").value;
     fetch(`https://www.omdbapi.com/?t=${name}&apikey=10040215`)
     .then(function(res){
-        return res.json()
+            return res.json()
     }).then(function(res){
-        console.log(res);
-    
             showData(res);
+    }).catch(function(rej){
+        console.log("error");
     })
 
 }
