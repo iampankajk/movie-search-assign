@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="search movie" id="name">
+    <input type="submit" onclick="search()" id="submit">
+    <div id="show">
+
+    </div>
+</body>
+</html>
+
+<script>
+    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=10040215")
+    .then(function(res){
+        return res.json()
+    }).then(function(res){
+        console.log(res);
+        let submit = document.getElementById("submit");
+        submit.onclick = function(){
+            search(res);
+        }
+    })
+
+    function search(res){
+        let show = document.getElementById("show");
+        show.innerHTML="";
+
+        let name = document.getElementById("name").value;
+        let div = document.createElement("div");
+        
+        let img = document.createElement("img");
+        img.src = res.Poster;
+
+        let title = document.createElement("p");
+        title.innerHTML = res.Title;
+
+        let rating = document.createElement("p");
+        rating.innerHTML = res.imdbRating;
+
+        div.append(img,title,rating);
+
+        if(name==res.Title){
+            show.append(div);
+        }
+        
+
+
+
+    }
+</script>
