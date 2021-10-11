@@ -42,9 +42,12 @@ function search(){
     .then(function(res){
             return res.json()
     }).then(function(res){
-            showData(res);
-    }).catch(function(rej){
-        console.log("error");
+            if(res.Title==undefined){
+
+            }else{
+                showData(res);
+            }
+            
     })
 
 }
