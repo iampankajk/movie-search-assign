@@ -5,10 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .searchbox{
+            width: 20%;
+            padding: 20px;
+            margin: auto;
+        }
+        .searchbox>input{
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-    <input type="text" placeholder="search movie" id="name">
-    <input type="submit" onclick="search()" id="submit">
+    <div class="searchbox">
+        <input type="text" placeholder="search movie" id="name">
+        <input type="submit" onclick="search()" id="submit">
+    </div>
+    
     <div id="show">
 
     </div>
@@ -44,6 +63,7 @@
         rating.innerHTML = res.imdbRating;
 
         div.append(img,title,rating);
+        div.style.marginLeft = "40%";
 
         if(name==res.Title){
             show.append(div);
