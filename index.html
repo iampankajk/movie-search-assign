@@ -35,18 +35,21 @@
 </html>
 
 <script>
-    fetch("https://www.omdbapi.com/?i=tt3896198&apikey=10040215")
+
+function search(){
+    let name = document.getElementById("name").value;
+    fetch(`https://www.omdbapi.com/?t=${name}&apikey=10040215`)
     .then(function(res){
         return res.json()
     }).then(function(res){
         console.log(res);
-        let submit = document.getElementById("submit");
-        submit.onclick = function(){
-            search(res);
-        }
+    
+            showData(res);
     })
 
-    function search(res){
+}
+ 
+    function showData(res){
         let show = document.getElementById("show");
         show.innerHTML="";
 
@@ -65,9 +68,9 @@
         div.append(img,title,rating);
         div.style.marginLeft = "40%";
 
-        if(name==res.Title){
+        
             show.append(div);
-        }
+    
         
 
 
