@@ -51,7 +51,7 @@
                     let show = document.getElementById("show");
                     show.innerHTML = "";
                     let img = document.createElement("img");
-                    img.style.width="100%";
+                    img.style.width = "100%";
                     img.src = "https://cdn.dribbble.com/users/547471/screenshots/3063720/not_found.gif";
                     show.append(img);
 
@@ -83,8 +83,17 @@
 
         let rating = document.createElement("p");
         rating.innerHTML = res.imdbRating;
+        var highRating = Number(res.imdbRating);
+        if (highRating>=8.5) {
+            var high = document.createElement("p");
+            high.innerHTML = "Hight Rated";
+            div.append(img, title, high, released, rating);
+        }else{
+            div.append(img, title, released, rating);
 
-        div.append(img, title, released, rating);
+        }
+
+
         div.style.marginLeft = "40%";
 
 
