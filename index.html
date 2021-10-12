@@ -45,7 +45,9 @@ function search(){
             if(res.Title==undefined){
 
             }else{
+                console.log(res);
                 showData(res);
+                
             }
             
     })
@@ -65,10 +67,13 @@ function search(){
         let title = document.createElement("p");
         title.innerHTML = res.Title;
 
+        let released = document.createElement("p");
+        released.innerHTML = res.Released;
+
         let rating = document.createElement("p");
         rating.innerHTML = res.imdbRating;
 
-        div.append(img,title,rating);
+        div.append(img,title,released,rating);
         div.style.marginLeft = "40%";
 
         
