@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,60 +8,70 @@
     <title>Document</title>
 
     <style>
-        body{
+        body {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-        .searchbox{
+
+        .searchbox {
             width: 20%;
             padding: 20px;
             margin: auto;
         }
-        .searchbox>input{
+
+        .searchbox>input {
             padding: 10px;
         }
     </style>
 </head>
+
 <body>
     <div class="searchbox">
         <input type="text" placeholder="search movie" id="name">
         <input type="submit" onclick="search()" id="submit">
     </div>
-    
+
     <div id="show">
 
     </div>
 </body>
+
 </html>
 
 <script>
 
-function search(){
-    let name = document.getElementById("name").value;
-    fetch(`https://www.omdbapi.com/?t=${name}&apikey=10040215`)
-    .then(function(res){
-            return res.json()
-    }).then(function(res){
-            if(res.Title==undefined){
+    function search() {
+        let name = document.getElementById("name").value;
+        fetch(`https://www.omdbapi.com/?t=${name}&apikey=10040215`)
+            .then(function (res) {
+                return res.json()
+            }).then(function (res) {
+                if (res.Title == undefined) {
+                    let show = document.getElementById("show");
+                    show.innerHTML = "";
+                    let img = document.createElement("img");
+                    img.style.width="100%";
+                    img.src = "https://cdn.dribbble.com/users/547471/screenshots/3063720/not_found.gif";
+                    show.append(img);
 
-            }else{
-                console.log(res);
-                showData(res);
-                
-            }
-            
-    })
+                } else {
+                    console.log(res);
+                    showData(res);
 
-}
- 
-    function showData(res){
+                }
+
+            })
+
+    }
+
+    function showData(res) {
         let show = document.getElementById("show");
-        show.innerHTML="";
+        show.innerHTML = "";
 
         let name = document.getElementById("name").value;
         let div = document.createElement("div");
-        
+
         let img = document.createElement("img");
         img.src = res.Poster;
 
@@ -73,13 +84,13 @@ function search(){
         let rating = document.createElement("p");
         rating.innerHTML = res.imdbRating;
 
-        div.append(img,title,released,rating);
+        div.append(img, title, released, rating);
         div.style.marginLeft = "40%";
 
-        
-            show.append(div);
-    
-        
+
+        show.append(div);
+
+
 
 
 
